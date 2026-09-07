@@ -1,0 +1,15 @@
+{
+  "name": "personal-skills",
+  "description": "Rahat's personal Claude Code skills bundle. Starts with 'standup' (EOD status from GitLab activity); more get added here over time.",
+  "version": "0.1.0",
+  "author": {
+    "name": "Rahat Sayyed"
+  },
+  "license": "UNLICENSED",
+  "keywords": [
+    "gitlab",
+    "standup",
+    "eod",
+    "productivity"
+  ]
+}

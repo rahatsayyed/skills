@@ -1,0 +1,23 @@
+{
+  "name": "personal-skills",
+  "owner": {
+    "name": "Rahat Sayyed"
+  },
+  "metadata": {
+    "description": "Rahat's personal Claude Code skills, installable via npx skills add."
+  },
+  "plugins": [
+    {
+      "name": "personal-skills",
+      "source": "./",
+      "description": "Personal skill bundle. Currently: standup (EOD status generated from GitLab commits, diffs, and MR reviews).",
+      "version": "0.1.0",
+      "author": {
+        "name": "Rahat Sayyed"
+      },
+      "license": "UNLICENSED",
+      "keywords": ["gitlab", "standup", "eod", "productivity"],
+      "category": "productivity"
+    }
+  ]
+}
