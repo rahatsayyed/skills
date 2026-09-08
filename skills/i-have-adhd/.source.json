@@ -1,0 +1,13 @@
+{
+  "note": "Vendored copy, not a live fetch. This file is metadata for the maintainer only — it is not read when the skill runs.",
+  "upstream_repo": "https://github.com/ayghri/i-have-adhd.git",
+  "upstream_path": "skills/i-have-adhd/SKILL.md",
+  "upstream_commit": "58494af57962b2d7a996b4d419474380a299af5e",
+  "vendored_at": "2026-09-08",
+  "update_steps": [
+    "git clone --depth 1 https://github.com/ayghri/i-have-adhd.git <tmp-dir>",
+    "diff <tmp-dir>/skills/i-have-adhd/SKILL.md skills/i-have-adhd/SKILL.md",
+    "copy over the changed content, keep the trimmed frontmatter (no metadata block)",
+    "update upstream_commit and vendored_at above"
+  ]
+}

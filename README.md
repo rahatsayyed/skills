@@ -19,6 +19,12 @@ install them on.
   commits, their diffs, and any merge requests you reviewed, groups the
   result by feature/MR, and asks once for anything GitLab can't see
   (meetings, calls, blockers) before writing the status.
+- **[i-have-adhd](./skills/i-have-adhd/SKILL.md)**: Shape output for an ADHD
+  reader — leads with the next action, numbers multi-step work, restates
+  state each turn, caps lists, cuts tangents and pleasantries. Off by
+  default; turn on with `/i-have-adhd`, off with "stop adhd mode". Vendored
+  from [ayghri/i-have-adhd](https://github.com/ayghri/i-have-adhd) — see
+  `skills/i-have-adhd/.source.json` for the pinned commit and update steps.
 
 More skills get added under `skills/<name>/` as they come up.
 
