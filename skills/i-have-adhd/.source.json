@@ -1,13 +1,34 @@
 {
   "note": "Vendored copy, not a live fetch. This file is metadata for the maintainer only — it is not read when the skill runs.",
   "upstream_repo": "https://github.com/ayghri/i-have-adhd.git",
-  "upstream_path": "skills/i-have-adhd/SKILL.md",
   "upstream_commit": "58494af57962b2d7a996b4d419474380a299af5e",
   "vendored_at": "2026-09-08",
+  "vendored_files": [
+    {
+      "local_path": "skills/i-have-adhd/SKILL.md",
+      "upstream_path": "skills/i-have-adhd/SKILL.md"
+    },
+    {
+      "local_path": "hooks/i-have-adhd-always-on.sh",
+      "upstream_path": "hooks/always-on.sh",
+      "note": "POSIX-only. Upstream also ships hooks/always-on.mjs (Node, primary) and hooks/always-on.ps1 (Windows PowerShell fallback) — skipped, sh covers macOS/Linux/Git Bash, which is what this repo targets. Add the other variants if a Windows-without-Git-Bash user needs them."
+    },
+    {
+      "local_path": "hooks/hooks.json",
+      "upstream_path": "hooks/hooks.json",
+      "note": "Rewritten to call the .sh script directly (per Claude Code plugin docs: https://code.claude.com/docs/en/plugins-reference) instead of upstream's Node-loader wrapper around always-on.mjs."
+    }
+  ],
   "update_steps": [
     "git clone --depth 1 https://github.com/ayghri/i-have-adhd.git <tmp-dir>",
     "diff <tmp-dir>/skills/i-have-adhd/SKILL.md skills/i-have-adhd/SKILL.md",
-    "copy over the changed content, keep the trimmed frontmatter (no metadata block)",
+    "diff <tmp-dir>/hooks/always-on.sh hooks/i-have-adhd-always-on.sh",
+    "copy over the changed content, keep the trimmed SKILL.md frontmatter (no metadata block) and the deviations below",
     "update upstream_commit and vendored_at above"
+  ],
+  "deviations_from_upstream": [
+    "hooks.json: command runs hooks/i-have-adhd-always-on.sh directly, no Node loader — see vendored_files note above.",
+    "i-have-adhd-always-on.sh: flipped from opt-in to opt-out, at the user's explicit request. Upstream gates the ruleset behind a flag file the user must create (~/.claude/.i-have-adhd-always). This fork runs it by default on every session, and only skips it when I_HAVE_ADHD_ALWAYS_ON=off is set (e.g. in settings.json's \"env\" block, matching the ECC_GATEGUARD=off convention from github.com/affaan-m/ECC). The flag-file check was removed entirely.",
+    "SKILL.md kept 'disable-model-invocation: true' as upstream ships it, by explicit choice. Known consequence in this Claude Code build: skills are not exposed as real CLI slash commands, and this flag also blocks the Skill tool from invoking the skill when a user types /i-have-adhd as a chat message — so on-demand invocation currently has no working path here. The SessionStart hook (now default-on) is the only way this skill actually turns on."
   ]
 }
