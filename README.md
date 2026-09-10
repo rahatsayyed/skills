@@ -41,6 +41,25 @@ install them on.
 
 More skills get added under `skills/<name>/` as they come up.
 
+## Other
+
+- **[scripts/statusline.sh](./scripts/statusline.sh)**: Powerline-style
+  Claude Code status line (git status, context/cost info). Not a skill —
+  Claude Code plugins cannot auto-register the main `statusLine` setting, so
+  this needs one manual step. See the setup comment at the top of the file,
+  or:
+
+  ```json
+  "statusLine": {
+    "type": "command",
+    "command": "~/.claude/plugins/marketplaces/personal-skills/scripts/statusline.sh"
+  }
+  ```
+
+  in `~/.claude/settings.json`, then run `/reload-plugins` once. After that,
+  edits to this file just need commit + push + `/reload-plugins` — no
+  re-copying.
+
 ## Notes
 
 - State a skill needs to remember across runs (like a GitLab username) is
