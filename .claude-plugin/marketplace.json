@@ -1,5 +1,5 @@
 {
-  "name": "personal-skills",
+  "name": "rahatsayyed",
   "owner": {
     "name": "Rahat Sayyed"
   },
@@ -10,13 +10,13 @@
     {
       "name": "personal-skills",
       "source": "./",
-      "description": "Personal skill bundle. Currently: standup (EOD status generated from GitLab commits, diffs, and MR reviews) and i-have-adhd (ADHD-friendly output shaping).",
+      "description": "Personal skill bundle. Currently: standup (EOD status generated from GitLab/GitHub commits, diffs, and MR/PR reviews) and i-have-adhd (ADHD-friendly output shaping).",
       "version": "0.2.0",
       "author": {
         "name": "Rahat Sayyed"
       },
       "license": "UNLICENSED",
-      "keywords": ["gitlab", "standup", "eod", "productivity", "adhd"],
+      "keywords": ["gitlab", "github", "standup", "eod", "productivity", "adhd"],
       "category": "productivity"
     }
   ]

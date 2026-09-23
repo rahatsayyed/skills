@@ -13,7 +13,7 @@
 # $0 is the absolute script path substituted into hooks.json by Claude Code,
 # so resolve SKILL.md relative to it instead of trusting an exported env var.
 script_dir=$(dirname -- "$0")
-skill_path="$script_dir/../skills/i-have-adhd/SKILL.md"
+skill_path="$script_dir/../skills/productivity/i-have-adhd/SKILL.md"
 [ -f "$skill_path" ] || exit 0
 
 # Strip a leading YAML frontmatter block (--- ... --- at the very top of file).

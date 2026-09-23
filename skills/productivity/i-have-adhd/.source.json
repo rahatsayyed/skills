@@ -5,7 +5,7 @@
   "vendored_at": "2026-09-08",
   "vendored_files": [
     {
-      "local_path": "skills/i-have-adhd/SKILL.md",
+      "local_path": "skills/productivity/i-have-adhd/SKILL.md",
       "upstream_path": "skills/i-have-adhd/SKILL.md"
     },
     {
@@ -21,7 +21,7 @@
   ],
   "update_steps": [
     "git clone --depth 1 https://github.com/ayghri/i-have-adhd.git <tmp-dir>",
-    "diff <tmp-dir>/skills/i-have-adhd/SKILL.md skills/i-have-adhd/SKILL.md",
+    "diff <tmp-dir>/skills/i-have-adhd/SKILL.md skills/productivity/i-have-adhd/SKILL.md",
     "diff <tmp-dir>/hooks/always-on.sh hooks/i-have-adhd-always-on.sh",
     "copy over the changed content, keep the trimmed SKILL.md frontmatter (no metadata block) and the deviations below",
     "update upstream_commit and vendored_at above"

@@ -14,7 +14,9 @@ Real tone samples, anonymized. Match this shape, not these words.
 - If the work involved investigation (a bug, a review pushback, a design
   question), write 2-4 sentences of prose describing what was found and what
   was decided — this is where the diff matters more than the commit log.
-- Link merge requests inline where relevant: `MR - <url>` or `(!1234)`.
+- Link merge/pull requests inline where relevant: `MR - <url>` or `(!1234)`
+  on GitLab, `PR - <url>` or `(#1234)` on GitHub. Match whichever platform
+  the activity came from — don't mix notations in one status.
 - A non-code section (customer calls, meetings, blockers, environment
   issues) goes last, same terse style, no separate "summary" or "reflection"
   paragraph.

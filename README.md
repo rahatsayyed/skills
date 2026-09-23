@@ -14,19 +14,21 @@ install them on.
 
 ## Reference
 
-- **[standup](./skills/standup/SKILL.md)**: Generate an EOD/standup status
-  update from your own GitLab activity over a given time period — reads
-  commits, their diffs, and any merge requests you reviewed, groups the
-  result by feature/MR, and asks once for anything GitLab can't see
-  (meetings, calls, blockers) before writing the status.
-- **[i-have-adhd](./skills/i-have-adhd/SKILL.md)**: Shape output for an ADHD
-  reader — leads with the next action, numbers multi-step work, restates
-  state each turn, caps lists, cuts tangents and pleasantries. On by default
-  for every session via a `SessionStart` hook (`hooks/hooks.json` +
+- **[standup](./skills/productivity/standup/SKILL.md)**: Generate an
+  EOD/standup status update from your own GitLab or GitHub activity over a
+  given time period — reads commits, their diffs, and any merge/pull
+  requests you reviewed, groups the result by feature/MR/PR, and asks once
+  for anything the platform can't see (meetings, calls, blockers) before
+  writing the status.
+- **[i-have-adhd](./skills/productivity/i-have-adhd/SKILL.md)**: Shape output
+  for an ADHD reader — leads with the next action, numbers multi-step work,
+  restates state each turn, caps lists, cuts tangents and pleasantries. On by
+  default for every session via a `SessionStart` hook (`hooks/hooks.json` +
   `hooks/i-have-adhd-always-on.sh`); say "stop adhd mode" to turn it off for
   just the current session. Vendored from
   [ayghri/i-have-adhd](https://github.com/ayghri/i-have-adhd) — see
-  `skills/i-have-adhd/.source.json` for the pinned commit and update steps.
+  `skills/productivity/i-have-adhd/.source.json` for the pinned commit and
+  update steps.
 
   Turn it off for good with an env var in Claude Code's `settings.json`:
 
