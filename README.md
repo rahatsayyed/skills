@@ -20,6 +20,11 @@ install them on.
   requests you reviewed, groups the result by feature/MR/PR, and asks once
   for anything the platform can't see (meetings, calls, blockers) before
   writing the status.
+- **[open-gitlab-mr](./skills/productivity/open-gitlab-mr/SKILL.md)**: Create
+  or update a GitLab merge request from the current branch — resolves project,
+  target branch and assignee from git and GitLab, writes a conventional-commit
+  title and a structured description from the real diff, and preserves
+  existing screenshots when updating.
 - **[i-have-adhd](./skills/productivity/i-have-adhd/SKILL.md)**: Shape output
   for an ADHD reader — leads with the next action, numbers multi-step work,
   restates state each turn, caps lists, cuts tangents and pleasantries. On by

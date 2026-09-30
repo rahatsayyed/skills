@@ -7,7 +7,7 @@
 #   2. Add this to ~/.claude/settings.json:
 #        "statusLine": {
 #          "type": "command",
-#          "command": "~/.claude/plugins/marketplaces/personal-skills/scripts/statusline.sh"
+#          "command": "~/.claude/plugins/marketplaces/rahatsayyed/scripts/statusline.sh"
 #        }
 #   3. Run /reload-plugins once so that path exists.
 #   Future edits to this file: commit, push, /reload-plugins — no copying.

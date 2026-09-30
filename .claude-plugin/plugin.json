@@ -16,6 +16,7 @@
   ],
   "skills": [
     "./skills/productivity/standup",
+    "./skills/productivity/open-gitlab-mr",
     "./skills/productivity/i-have-adhd"
   ]
 }
