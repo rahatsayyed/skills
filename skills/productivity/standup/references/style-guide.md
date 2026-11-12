@@ -1,70 +1,108 @@
 # EOD status style guide
 
-Real tone samples, anonymized. Match this shape, not these words.
+Tone samples are anonymized. Match this shape and voice, not these words.
+
+## Voice (most important)
+
+- Use plain, simple words. Write short sentences. Give one fact in each
+  sentence.
+- Say the problem first, then the fix. Use "Before, it showed X" or "The page
+  did X" for the old state. Then say what it does now.
+- Say why it matters, not only what changed. Name the symptom that a user or
+  developer saw (a flash, a clipped label, a duplicate request, a console
+  error).
+- Use past tense for finished work. Use present tense for current behavior
+  ("The modal now shows...").
+- Prefer active voice. Do not write "I worked on" or "was done". Start a
+  bullet with the action or the feature ("Moved...", "Added...", "Fixed...").
+- Use real names from the code: component, hook, endpoint, file, prop. Put
+  them in backticks. This makes the status easy to check.
+- No filler: no "Today I worked on...", no "In summary...", no closing
+  reflection.
+- No marketing words (robust, seamless, enhanced, improved performance). Give
+  the fact: "one request instead of two", "219 s to 50 s".
+
+## Format (always markdown)
+
+- The output is always valid markdown. Never output flat lines or Slack-only
+  symbols (`•`, `◦`).
+- Top-level bullets use `-`. Nested bullets use `-` with exactly 2 spaces of
+  indentation for each level. Do not use tabs. Do not mix `-` and `*`.
+- Put one blank line after the header line.
+- Put one blank line before a new group such as `Reviews:` or `Blocked:`.
+- Wrap code names (files, hooks, props, endpoints, branch names) in
+  backticks.
+- Check the indentation before you send. A sub-bullet that is not indented
+  by 2 spaces under its parent is a mistake.
 
 ## Shape
 
-- Header line: `EOD STATUS:`. 
-- One section per MR or feature area. Bold or plain title line, then bullets.
-- Bullets are short, factual, past tense: what changed and why, not just
-  the commit subject line.
-- **Always use markdown `-` bullets, never flat lines.** Nest a `-`
-  sub-bullet list under a section when that section bundles several
-  distinct fix-areas under one MR/category (see worked example 2).
-- If the work involved investigation (a bug, a review pushback, a design
-  question), write 2-4 sentences of prose describing what was found and what
-  was decided — this is where the diff matters more than the commit log.
-- Link merge/pull requests inline where relevant: `MR - <url>` or `(!1234)`
-  on GitLab, `PR - <url>` or `(#1234)` on GitHub. Match whichever platform
-  the activity came from — don't mix notations in one status.
-- A non-code section (customer calls, meetings, blockers, environment
-  issues) goes last, same terse style, no separate "summary" or "reflection"
-  paragraph.
-- No filler like "Today I worked on..." or "In summary...". Start directly
-  with the feature name or the action.
+- Header line: `EOD STATUS:` (add the date only if the user does, for example
+  `EOD STATUS: 14 Oct 2026`).
+- One top-level bullet for each MR or feature area. Put the MR number and its
+  state in the title: `(!3122, merged)`, `(!2891, open)`, `(!2949, in
+  review)`, `(!2965, draft)`. Add the target branch when it is not the
+  default: `(!3048, target rel-1.3.11)`.
+- Under each top bullet, use sub-bullets. Each sub-bullet is one change, one
+  cause, or one result. Keep 2 to 6 sub-bullets.
+- Use the platform's own notation. GitLab: `!1234`. GitHub: `#1234`. Do not
+  mix them. Add the full link only when the user asks for links.
+- Add the issue number when the MR closes or links one: `closes #1711`.
+- End a feature with a check line when it is real: `Type check and lint
+  pass.`, `497 Jest tests pass.`, `Added 5 unit tests.` Never claim a check
+  that was not run.
+- If work is blocked or waiting, say so in one line: `Waiting for the
+  reviewer's approval.`, `Depends on the backend endpoint.`
+- A short `Reviews:` group lists the MRs reviewed and the one notable finding.
+- Put non-code items (meetings, environment, blockers) last, in the same terse
+  style.
 
-## Worked example
+## Worked example 1 (feature with cause and fix)
 
-```
+```markdown
 EOD STATUS:
 
-- Config toggle for feature X (!1234)
-  - Relabeled and refactored the mode flag to a plain enable/disable boolean
-  - Reworked the dropdown interaction, role-gated the action
-  - Wired GET/POST endpoints for the new state
-  - Default-expanded the settings section; minor layout fix
-- Bug review on the latency-sensitive path
-- Reviewed the flagged issue; traced it to stale test data from a scripted load-test run, not a real regression.
-- Found the cache logic was also hitting the DB for freshness checks on a hot read path — fixed invalidation on both write paths, and made the hot read path cache-only. Latency improved on that path as a result. MR - https://gitlab.example.com/group/project/-/merge_requests/2750
-
-Reviews:
-- Reviewed a handful of smaller MRs (naming cleanup, a locale fix, a timestamp field).
-
-Environment:
-- Still blocked on local dev setup (OS mismatch with the required tooling) — using a remote box as a workaround for now.
+- Overview scoped to the selected tenant (!3122, merged)
+  - Changing the tenant in the sidebar now reloads the overview widgets for that tenant. The widgets send the chosen tenant to the backend.
+  - The tenant choice now lives in one shared context. A new hook picks the tenant: the saved one, else the default, else the first.
+  - The six widgets and their data hooks pass the tenant. A tenant switch causes a refetch.
+  - Type check and lint pass. 497 tests pass.
 ```
 
-## Worked example 2
+## Worked example 2 (bug with symptom, cause, fix)
 
-Use this shape when several MRs each bundle multiple small, unrelated fixes:
-
-```
+```markdown
 EOD STATUS:
-- Model routing bug fixes (!1201, !1202):
-  - Removed an unreliable tooltip on the route card
-  - Added a loading spinner to stop an empty-state flash
-  - Fixed stale weight recalculation when a model is removed
-  - Clamped the weight input to a minimum of 0
-- Backend validation error surfacing (!1210):
-  - Error helper now joins array-style validation errors into one message
-  - Applied it across the affected forms
+
+- Agents page fixes (branch `fix/agents-page`)
+  - The page sent the same list request twice, about 1 s apart. I replaced three effects with one. It fetches once when the filter or sort changes, and it goes back to page 1.
+  - Responses from older requests are now ignored. A failed request shows an error toast.
+  - A stray semicolon in the CSP header ended the `frame-ancestors` list early. The browser logged an invalid directive error. Removed it.
+  - Type check and lint pass.
+```
+
+## Worked example 3 (several MRs, one short bullet each)
+
+```markdown
+EOD STATUS:
+
+- Policy pages loading state (!3066)
+  - Pages now show a skeleton while loading. Before, they flashed a placeholder badge and fixed title text.
+- Chart labels (!3067)
+  - X-axis labels were clipped. The label width now follows the bar width, so the full name or an ellipsis with a tooltip shows.
+
+Blocked:
+
+- Waiting for the backend endpoint before the UI part can start.
 ```
 
 ## What NOT to do
 
-- Don't paste raw commit messages 1:1 as bullets — rephrase into what the
-  change accomplished.
-- Don't invent detail the diff doesn't support.
-- Don't include real customer/company/teammate names in any file that gets
-  committed to this repo's history if the repo might ever go public — keep
-  those in the live status you show the user, not in stored examples.
+- Do not paste commit messages 1:1. Say what the change did.
+- Do not write one bullet for each commit.
+- Do not invent detail that the diff does not support.
+- Do not write vague bullets ("various fixes", "minor cleanup"). Name the
+  fix.
+- Do not write about a test or check that was not run.
+- Do not put real customer, company, or teammate names in this file or its
+  examples. Keep those in the live status shown to the user only.
