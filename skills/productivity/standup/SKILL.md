@@ -73,15 +73,20 @@ platform, fall back to the CLI via Bash: `glab` for GitLab, `gh` for GitHub.
    written the same way as the rest (short factual bullets/prose), before
    finalizing.
 6. **Write the status.** Follow [references/style-guide.md](references/style-guide.md)
-   for tone and structure. Rephrase into plain first-person, past-tense
-   engineering prose — never paste raw commit messages or diff hunks
-   verbatim. Include MR/PR links for anything merged, in review, or
-   noteworthy, using the platform's own vocabulary (MR/`!1234` for GitLab,
-   PR/`#1234` for GitHub) in the final write-up.
+   for voice, format and structure. Use plain words and short sentences.
+   Say the problem first, then the fix. Never paste raw commit messages or
+   diff hunks verbatim. Mark each MR/PR with its state (merged, open, in
+   review, draft), using the platform's own vocabulary (MR/`!1234` for
+   GitLab, PR/`#1234` for GitHub).
+7. **Offer the timesheet.** After the status is final, if the `timesheet`
+   skill is available, offer to run it for the same date. Pass the final
+   status text to it. Do not run it without the user's yes, unless the user
+   already asked for both.
 
 ## Output
 
-Header `EOD STATUS:` (or `EOD Status:` — match whichever the user used most
-recently), then grouped sections. See
+Always valid markdown. Header `EOD STATUS:` (or `EOD Status:` — match
+whichever the user used most recently), then grouped `-` bullets with
+2-space nested indentation. See
 [references/style-guide.md](references/style-guide.md) for the exact shape
 and worked (anonymized) examples.

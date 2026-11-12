@@ -20,6 +20,11 @@ install them on.
   requests you reviewed, groups the result by feature/MR/PR, and asks once
   for anything the platform can't see (meetings, calls, blockers) before
   writing the status.
+- **[timesheet](./skills/productivity/timesheet/SKILL.md)**: Write a one-line
+  work description for a date into your own block of a Google Sheets monthly
+  timesheet, using the EOD status from `standup`. Skips weekends and holidays,
+  asks before it overwrites, and never touches other people's blocks. Sheet
+  details are kept in your local memory, not in this repo.
 - **[open-gitlab-mr](./skills/productivity/open-gitlab-mr/SKILL.md)**: Create
   or update a GitLab merge request from the current branch — resolves project,
   target branch and assignee from git and GitLab, writes a conventional-commit
